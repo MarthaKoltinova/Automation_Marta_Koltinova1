@@ -11,9 +11,12 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Lesson4 {
-    WebDriver driver = new ChromeDriver();
+    private WebDriver driver;
 
     @BeforeTest
     public void setUp() {
@@ -22,14 +25,9 @@ public class Lesson4 {
 
     }
 
-    @AfterTest
-    public void tearDown() {
-        driver.quit();
-    }
 
-    @Test
+    @Test(priority = 1)
     public void google() {
-       // driver.get("https://www.google.by/");
         driver.manage().window().setSize(new Dimension(1260, 662));
         driver.findElement(By.name("q")).sendKeys("погода минск");
         {
@@ -40,8 +38,36 @@ public class Lesson4 {
         driver.findElement(By.name("q")).clear();
         {
             String value = driver.findElement(By.name("q")).getAttribute("value");
-            Assert.assertEquals(value, " ");
+            Assert.assertEquals(value, "");
         }
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+    }
+
+    @Test(priority = 2)
+    public void enterMassage() {
+        driver.findElement(By.name("q")).clear();
+        driver.findElement(By.name("q")).sendKeys("Привет,Мир!");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        String text=driver.findElement(By.xpath("//h3")).getText();
+        Assert.assertEquals(text,"Привет, Мир!");
+
+    }
+    @Test(priority = 3)
+    public void findNothing(){
+        driver.findElement(By.name("q")).clear();
+        driver.findElement(By.name("q")).sendKeys("*//*");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        String text=driver.findElement(By.cssSelector("p:nth-child(1)")).getText();
+        List<String> results= new ArrayList<>();
+        results.add("По запросу *//* ничего не найдено");
+        results.add("Па запыце *//* нічога не знойдзена");
+        results.add("Your search - *//* - did not match any documents");
+        Assert.assertTrue(results.contains(text));
+
+    }
+
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
     }
 }
