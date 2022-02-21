@@ -9,6 +9,7 @@ public class CatalogTestPage extends BasePage {
     private By addToCard = By.name("add-to-cart-sauce-labs-backpack");
     private By shoppingCard = By.className("shopping_cart_link");
     private By count = By.className("shopping_cart_badge");
+    private By title = By.className("title");
 
 
     public CatalogTestPage addItem() {
@@ -28,5 +29,10 @@ public class CatalogTestPage extends BasePage {
 
     private CatalogTestPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public void verifyPage() {
+        Assert.assertTrue(driver.findElement(title).isDisplayed());
     }
 }

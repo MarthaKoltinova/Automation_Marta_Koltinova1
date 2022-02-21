@@ -9,6 +9,7 @@ public class HomePage extends BasePage {
     private By login = By.name("user-name");
     private By passwordHomePage = By.id("password");
     private By loginButton = By.name("login-button");
+    private  By logo=By.className("login_logo");
 
 
     public void sendUserName(String username) {
@@ -22,7 +23,8 @@ public class HomePage extends BasePage {
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }
-    public void logIn (String username, String password) {
+
+    public void logIn(String username, String password) {
         sendUserName(username);
         sendPassword(password);
         clickLoginButton();
@@ -31,6 +33,11 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public void verifyPage() {
+        Assert.assertTrue(driver.findElement(logo).isDisplayed());
     }
 
 }

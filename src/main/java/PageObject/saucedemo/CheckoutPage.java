@@ -10,9 +10,15 @@ public class CheckoutPage extends BasePage {
     private By lastNameField = By.id("last-name");
     private By zipCodeField = By.id("postal-code");
     private By continueButton = By.id("continue");
+    private By title = By.className("title");
 
     protected CheckoutPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public void verifyPage() {
+        Assert.assertTrue(driver.findElement(title).isDisplayed());
     }
 
     public CheckoutPage sendFirstName(String firstName) {
