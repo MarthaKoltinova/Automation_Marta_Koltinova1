@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture 12" parallel="tests">
+    <parameter name="config" value="herokuapp"/>
+    <parameter name="url" value="http://the-internet.herokuapp.com/"/>
+
+    <test name="File Uploader">
+        <parameter name="linkName" value="FILE_UPLOAD"/>
+        <classes>
+            <class name="Lesson12.HomePageTest"/>
+            <class name="Lesson12.FileUploaderPageTest"/>
+        </classes>
+    </test>
+    <test name="Context menu page test">
+        <parameter name="linkName" value="CONTEXT_MENU"/>
+        <classes>
+            <class name="Lesson12.HomePageTest"/>
+            <class name="Lesson12.ContextMenuPageTest"/>
+        </classes>
+    </test>
+    <test name="Dynamic controls page test">
+        <parameter name="linkName" value="DYNAMIC_CONTROLS"/>
+        <classes>
+            <class name="Lesson12.HomePageTest"/>
+            <class name="Lesson12.DynamicControlsPageTest"/>
+        </classes>
+    </test>
+</suite>

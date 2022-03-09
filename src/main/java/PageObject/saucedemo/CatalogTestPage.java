@@ -33,10 +33,6 @@ public class CatalogTestPage extends BasePage {
         return this;
     }
 
-    public CatalogTestPage(WebDriver driver) {
-        super(driver);
-    }
-
     @Override
     public void verifyPage() {
         Assert.assertTrue(driver.findElement(title).isDisplayed());

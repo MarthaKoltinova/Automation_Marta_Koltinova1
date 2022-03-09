@@ -12,10 +12,6 @@ public class CheckoutPage extends BasePage {
     private By continueButton = By.id("continue");
     private By title = By.className("title");
 
-    protected CheckoutPage(WebDriver driver) {
-        super(driver);
-    }
-
     @Override
     public void verifyPage() {
         Assert.assertTrue(driver.findElement(title).isDisplayed());

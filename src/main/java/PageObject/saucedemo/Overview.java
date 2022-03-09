@@ -8,10 +8,6 @@ public class Overview extends BasePage{
     private By finishButton = By.id("finish");
     private By title = By.className("title");
 
-    protected Overview(WebDriver driver) {
-        super(driver);
-    }
-
     @Override
     public void verifyPage() {
         Assert.assertTrue(driver.findElement(title).isDisplayed());

@@ -30,10 +30,6 @@ public class HomePage extends BasePage {
 
     }
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
-
     @Override
     public void verifyPage() {
         Assert.assertTrue(driver.findElement(logo).isDisplayed());

@@ -8,13 +8,13 @@ public class Lesson9 extends BaseTest{
 
     @Test(priority = 1)
     public void addItem() {
-        get(CatalogTestPage.class).addItem().goToShoppingCard().countOfItems();
+        get(CatalogTestPage.class).addItem(3).goToShoppingCard().countOfItems();
         get(BinTestPage.class).verifyPage();
     }
 
     @Test(priority = 2)
     public void removeItem() {
-        get(BinTestPage.class).removeItem().verifyDelete().clickCheckout();
+        get(BinTestPage.class).removeItem(2).verifyDelete().clickCheckout();
         get(CheckoutPage.class).verifyPage();
     }
 

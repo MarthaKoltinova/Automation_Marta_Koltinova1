@@ -35,9 +35,7 @@ public class BinTestPage extends BasePage {
 
     }
 
-    private BinTestPage(WebDriver driver) {
-        super(driver);
-    }
+
 
     @Override
     public void verifyPage() {
